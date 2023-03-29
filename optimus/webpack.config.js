@@ -27,19 +27,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
         library: { type: "module" },
-
-        // For remotes (please adjust)
-        // name: "optimus",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './/src/app/app.component.ts',
-        // },        
-        
-        // For hosts (please adjust)
-        // remotes: {
-        //     "mfe1": "http://localhost:3000/remoteEntry.js",
-
-        // },
+        name: "optimus",
+        filename: "remoteEntry.js",
+        exposes: {
+            './OptimusModule': './src/app/child-module/child.module.ts',
+        },        
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
